@@ -1,0 +1,92 @@
+﻿@{
+    ViewData["Title"] = "DashBoard";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<section class="content-header">
+    <h1>Dashboard</h1>
+    <ol class="breadcrumb">
+        <li><a href="/"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li class="active">Dashboard</li>
+    </ol>
+</section>
+<div class="col-lg-12 alerts">
+    <div id="custom-alerts" style="display:none;">
+        <div class="alert alert-dismissable">
+            <div class="custom-msg"></div>
+        </div>
+    </div>
+</div>
+<div class="clearfix"></div>
+
+<section class="content">
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="box box-success">
+                <div class="box-header">
+                    <h3 class="box-title">Quick Links</h3>
+                </div>
+                <div class="box-body">
+                    <a class="btn btn-app" href="/pos">
+                        <i class="fa fa-th"></i> POS
+                    </a>
+                    <a class="btn btn-app" href="/products">
+                        <i class="fa fa-barcode"></i> Products
+                    </a>
+                    <a class="btn btn-app" href="/sales">
+                        <i class="fa fa-shopping-cart"></i> Sales
+                    </a>
+                    <a class="btn btn-app" href="/sales/opened">
+
+                        <i class="fa fa-bell-o"></i> Opened Bills
+                    </a>
+                    <a class="btn btn-app" href="/categories">
+                        <i class="fa fa-folder-open"></i> Categories
+                    </a>
+                    <a class="btn btn-app" href="/gift_cards">
+                        <i class="fa fa-credit-card"></i> Gift Card
+                    </a>
+                    <a class="btn btn-app" href="/customers">
+                        <i class="fa fa-users"></i> Customers
+                    </a>
+                    <a class="btn btn-app" href="/settings">
+                        <i class="fa fa-cogs"></i> Settings
+                    </a>
+                    <a class="btn btn-app" href="/reports">
+                        <i class="fa fa-bar-chart-o"></i> Reports
+                    </a>
+                    <a class="btn btn-app" href="/users">
+                        <i class="fa fa-users"></i> Users
+                    </a>
+                    <a class="btn btn-app" href="/settings/backups">
+                        <i class="fa fa-database"></i> Backups
+                    </a>
+
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-8">
+                    <div class="box box-primary">
+                        <div class="box-header">
+                            <h3 class="box-title">Sales Chart</h3>
+                        </div>
+                        <div class="box-body">
+                            <div id="chart" style="height:300px;"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="box box-primary">
+                        <div class="box-header">
+                            <h3 class="box-title">Top Products (February 2018)</h3>
+                        </div>
+                        <div class="box-body">
+                            <div id="chart2" style="height:300px;"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

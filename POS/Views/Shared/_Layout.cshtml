@@ -1,0 +1,323 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - POS</title>
+    <!-- Bootstrap 3.3.6 -->
+    <link rel="stylesheet" href="~/Theme/bootstrap/css/bootstrap.min.css">
+    <!-- Theme style -->
+    <link rel="stylesheet" href="~/Theme/dist/css/AdminLTE.min.css">
+    <!-- AdminLTE Skins. Choose a skin from the css/skins
+         folder instead of downloading all of them to reduce the load. -->
+    <link rel="stylesheet" href="~/Theme/dist/css/skins/_all-skins.min.css">
+    <link href="~/Theme/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet" />
+</head>
+<body class="skin-green fixed sidebar-mini">
+    <div class="wrapper rtl rtl-inv">
+        <header class="main-header">
+            <a href="/" class="logo">
+                <span class="logo-mini">POS</span>
+                <span class="logo-lg">Simple<b>POS</b></span>
+            </a>
+            <nav class="navbar navbar-static-top" role="navigation">
+                <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </a>
+                <ul class="nav navbar-nav pull-left">
+                    <li class="dropdown hidden-xs">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><img src="~/Theme/images/english.png" alt="english"></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="pos/language/arabic"><img src="~/Theme/images/arabic.png" class="language-img"> &nbsp;&nbsp;Arabic</a></li>
+                            <li><a href="pos/language/english"><img src="~/Theme/images/english.png" class="language-img"> &nbsp;&nbsp;English</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="/stores/deselect_store" data-toggle="tooltip" data-placement="right" title="Unselect Store"><i class="fa fa-square"></i></a>
+                    </li>
+                </ul>
+                <div class="navbar-custom-menu">
+                    <ul class="nav navbar-nav">
+                        <li class="hidden-xs hidden-sm"><a href="#" class="clock"></a></li>
+                        <li class="hidden-xs"><a href="/" data-toggle="tooltip" data-placement="bottom" title="Dashboard"><i class="fa fa-dashboard"></i></a></li>
+                        <li class="hidden-xs"><a href="/settings" data-toggle="tooltip" data-placement="bottom" title="Settings"><i class="fa fa-cogs"></i></a></li>
+                        <li><a href="/pos/view_bill" target="_blank" data-toggle="tooltip" data-placement="bottom" title="Customer Display"><i class="fa fa-desktop"></i></a></li>
+                        <li><a href="/pos" data-toggle="tooltip" data-placement="bottom" title="POS"><i class="fa fa-th"></i></a></li>
+                        <li class="dropdown user user-menu" style="padding-right:5px;">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                <img src="~/Theme/images/male.png" class="user-image" alt="Avatar" />
+                                <span class="hidden-xs">Admin Admin</span>
+                            </a>
+                            <ul class="dropdown-menu" style="padding-right:3px;">
+                                <li class="user-header">
+                                    <img src="~/Theme/images/male.png" class="img-circle" alt="Avatar" />
+                                    <p>
+                                        <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="08696c656166487c6d6b6c61697a71266b6765">[email&#160;protected]</a> <small>Member since Thu 25 Jun 2015 11:59 AM</small>
+                                    </p>
+                                </li>
+                                <li class="user-footer">
+                                    <div class="pull-left">
+                                        <a href="/users/profile/1" class="btn btn-default btn-flat">Profile</a>
+                                    </div>
+                                    <div class="pull-right">
+                                        <a href="/logout" class="btn btn-default btn-flat sign_out">Sign Out</a>
+                                    </div>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </header>
+        <aside class="main-sidebar">
+            <section class="sidebar">
+                <ul class="sidebar-menu">
+
+                    <li class="mm_welcome"><a href="/"><i class="fa fa-dashboard"></i> <span>Dashboard</span></a></li>
+                    <li class="mm_pos"><a href="/pos"><i class="fa fa-th"></i> <span>POS</span></a></li>
+                    <li class="treeview mm_products">
+                        <a href="#">
+                            <i class="fa fa-barcode"></i>
+                            <span>Products</span>
+                            <i class="fa fa-angle-left pull-right"></i>
+                        </a>
+                        <ul class="treeview-menu">
+                            <li id="products_index"><a href="/products"><i class="fa fa-circle-o"></i> List Products</a></li>
+                            <li id="products_add"><a href="/products/add"><i class="fa fa-circle-o"></i> Add Products</a></li>
+                            <li id="products_import"><a href="/products/import"><i class="fa fa-circle-o"></i> Import Products</a></li>
+                            <li class="divider"></li>
+                            <li id="products_print_barcodes"><a href="/products/print_barcodes" data-toggle="ajax"><i class="fa fa-circle-o"></i> Print Barcodes</a></li>
+                            <li id="products_print_labels"><a href="/products/print_labels" data-toggle="ajax"><i class="fa fa-circle-o"></i> Print Labels</a></li>
+                        </ul>
+                    </li>
+                    <li class="treeview mm_categories">
+                        <a href="#">
+                            <i class="fa fa-folder"></i>
+                            <span>Categories</span>
+                            <i class="fa fa-angle-left pull-right"></i>
+                        </a>
+                        <ul class="treeview-menu">
+                            <li id="categories_index"><a href="/categories"><i class="fa fa-circle-o"></i> List Categories</a></li>
+                            <li id="categories_add"><a href="/categories/add"><i class="fa fa-circle-o"></i> Add Category</a></li>
+                            <li id="categories_import"><a href="/categories/import"><i class="fa fa-circle-o"></i> Import Categories</a></li>
+                        </ul>
+                    </li>
+                    <li class="treeview mm_sales">
+                        <a href="#">
+                            <i class="fa fa-shopping-cart"></i>
+                            <span>Sales</span>
+                            <i class="fa fa-angle-left pull-right"></i>
+                        </a>
+                        <ul class="treeview-menu">
+                            <li id="sales_index"><a href="/sales"><i class="fa fa-circle-o"></i> List Sales</a></li>
+                            <li id="sales_opened"><a href="/sales/opened"><i class="fa fa-circle-o"></i> List Opened Bills</a></li>
+                        </ul>
+                    </li>
+                    <li class="treeview mm_purchases">
+                        <a href="#">
+                            <i class="fa fa-plus"></i>
+                            <span>Purchases</span>
+                            <i class="fa fa-angle-left pull-right"></i>
+                        </a>
+                        <ul class="treeview-menu">
+                            <li id="purchases_index"><a href="/purchases"><i class="fa fa-circle-o"></i> List Purchases</a></li>
+                            <li id="purchases_add"><a href="/purchases/add"><i class="fa fa-circle-o"></i> Add Purchase</a></li>
+                            <li class="divider"></li>
+                            <li id="purchases_expenses"><a href="/purchases/expenses"><i class="fa fa-circle-o"></i> List Expenses</a></li>
+                            <li id="purchases_add_expense"><a href="/purchases/add_expense"><i class="fa fa-circle-o"></i> Add Expense</a></li>
+                        </ul>
+                    </li>
+                    <li class="treeview mm_gift_cards">
+                        <a href="#">
+                            <i class="fa fa-credit-card"></i>
+                            <span>Gift Card</span>
+                            <i class="fa fa-angle-left pull-right"></i>
+                        </a>
+                        <ul class="treeview-menu">
+                            <li id="gift_cards_index"><a href="/gift_cards"><i class="fa fa-circle-o"></i> List Gift Cards</a></li>
+                            <li id="gift_cards_add"><a href="/gift_cards/add"><i class="fa fa-circle-o"></i> Add Gift Card</a></li>
+                        </ul>
+                    </li>
+                    <li class="treeview mm_auth mm_customers mm_suppliers">
+                        <a href="#">
+                            <i class="fa fa-users"></i>
+                            <span>People</span>
+                            <i class="fa fa-angle-left pull-right"></i>
+                        </a>
+                        <ul class="treeview-menu">
+                            <li id="auth_users"><a href="/users"><i class="fa fa-circle-o"></i> List Users</a></li>
+                            <li id="auth_add"><a href="/users/add"><i class="fa fa-circle-o"></i> Add User</a></li>
+                            <li class="divider"></li>
+                            <li id="customers_index"><a href="/customers"><i class="fa fa-circle-o"></i> List Customers</a></li>
+                            <li id="customers_add"><a href="/customers/add"><i class="fa fa-circle-o"></i> Add Customer</a></li>
+                            <li class="divider"></li>
+                            <li id="suppliers_index"><a href="/suppliers"><i class="fa fa-circle-o"></i> List Suppliers</a></li>
+                            <li id="suppliers_add"><a href="/suppliers/add"><i class="fa fa-circle-o"></i> Add Supplier</a></li>
+                        </ul>
+                    </li>
+                    <li class="treeview mm_settings">
+                        <a href="#">
+                            <i class="fa fa-cogs"></i>
+                            <span>Settings</span>
+                            <i class="fa fa-angle-left pull-right"></i>
+                        </a>
+                        <ul class="treeview-menu">
+                            <li id="settings_index"><a href="/settings"><i class="fa fa-circle-o"></i> Settings</a></li>
+                            <li class="divider"></li>
+                            <li id="settings_stores"><a href="/settings/stores"><i class="fa fa-circle-o"></i> Stores</a></li>
+                            <li id="settings_add_store"><a href="/settings/add_store"><i class="fa fa-circle-o"></i> Add Store</a></li>
+                            <li class="divider"></li>
+                            <li id="settings_printers"><a href="/settings/printers"><i class="fa fa-circle-o"></i> Printers</a></li>
+                            <li id="settings_add_printer"><a href="/settings/add_printer"><i class="fa fa-circle-o"></i> Add Printer</a></li>
+                            <li class="divider"></li>
+                            <li id="settings_backups"><a href="/settings/backups"><i class="fa fa-circle-o"></i> Backups</a></li>
+
+                        </ul>
+                    </li>
+                    <li class="treeview mm_reports">
+                        <a href="#">
+                            <i class="fa fa-bar-chart-o"></i>
+                            <span>Reports</span>
+                            <i class="fa fa-angle-left pull-right"></i>
+                        </a>
+                        <ul class="treeview-menu">
+                            <li id="reports_daily_sales"><a href="/reports/daily_sales"><i class="fa fa-circle-o"></i> Daily Sales</a></li>
+                            <li id="reports_monthly_sales"><a href="/reports/monthly_sales"><i class="fa fa-circle-o"></i> Monthly Sales</a></li>
+                            <li id="reports_index"><a href="/reports"><i class="fa fa-circle-o"></i> Sales Report</a></li>
+                            <li class="divider"></li>
+                            <li id="reports_payments"><a href="/reports/payments"><i class="fa fa-circle-o"></i> Payments Report</a></li>
+                            <li class="divider"></li>
+                            <li id="reports_registers"><a href="/reports/registers"><i class="fa fa-circle-o"></i> Registers Report</a></li>
+                            <li class="divider"></li>
+                            <li id="reports_top_products"><a href="/reports/top_products"><i class="fa fa-circle-o"></i> Top Products</a></li>
+                            <li id="reports_products"><a href="/reports/products"><i class="fa fa-circle-o"></i> Products Report</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </section>
+        </aside>
+
+        <div class="content-wrapper">
+            @RenderBody()
+        </div>
+        <footer class="main-footer">
+            <div class="pull-right hidden-xs">
+                Version <strong>4.0.14</strong>
+            </div>
+            Copyright &copy; 2018 SimplePOS. All rights reserved.
+        </footer>
+    </div>
+    @RenderSection("Scripts", required: false)
+    <!-- jQuery 2.2.3 -->
+<script src="~/Theme/plugins/jQuery/jquery-2.2.3.min.js"></script>
+
+<!-- Bootstrap 3.3.6 -->
+<script src="~/Theme/bootstrap/js/bootstrap.min.js"></script>
+<!-- highchart.js charts -->
+<script src="~/Theme/plugins/highchart/highcharts.js"></script>
+<!-- AdminLTE App -->
+<script src="~/Theme/dist/js/app.min.js"></script>
+<script type="text/javascript">
+    var base_url = '/';
+    var site_url = '/';
+    var dateformat = 'D j M Y', timeformat = 'h:i A';
+        var Settings = {"logo":"logo1.png","site_name":"SimplePOS","tel":"0105292122","dateformat":"D j M Y","timeformat":"h:i A","language":"english","theme":"default","mmode":"0","captcha":"0","currency_prefix":"USD","default_customer":"3","default_tax_rate":"5%","rows_per_page":"10","total_rows":"30","header":"<h2><strong>Simple POS<\/strong><\/h2>\r\n       My Shop Lot, Shopping Mall,<br>\r\n                                                                                              Post Code, City<br>","footer":"Thank you for your business!\r\n<br>","bsty":"3","display_kb":"0","default_category":"1","default_discount":"0","item_addition":"1","barcode_symbology":"","pro_limit":"10","decimals":"2","thousands_sep":",","decimals_sep":".","focus_add_item":"ALT+F1","add_customer":"ALT+F2","toggle_category_slider":"ALT+F10","cancel_sale":"ALT+F5","suspend_sale":"ALT+F6","print_order":"ALT+F11","print_bill":"ALT+F12","finalize_sale":"ALT+F8","today_sale":"Ctrl+F1","open_hold_bills":"Ctrl+F2","close_register":"ALT+F7","java_applet":"0","receipt_printer":"","pos_printers":"","cash_drawer_codes":"","char_per_line":"42","rounding":"1","pin_code":"abdbeb4d8dbe30df8430a8394b7218ef","purchase_code":null,"envato_username":null,"theme_style":"green","after_sale_page":null,"overselling":"1","multi_store":"1","qty_decimals":"2","symbol":null,"sac":"0","display_symbol":null,"remote_printing":"1","printer":null,"order_printers":null,"auto_print":"0","local_printers":null,"rtl":null,"print_img":null,"selected_language":"english"};
+    $(window).load(function () {
+        $('.mm_welcome').addClass('active');
+        $('#welcome_index').addClass('active');
+    });
+    var lang = new Array();
+    lang['code_error'] = 'Code Error';
+    lang['r_u_sure'] = '<strong>Are you sure?</strong>';
+    lang['register_open_alert'] = 'Register is open, are you sure to sign out?';
+    lang['code_error'] = 'Code Error';
+    lang['r_u_sure'] = '<strong>Are you sure?</strong>';
+    lang['no_match_found'] = 'No match found';
+</script>
+<script type="text/javascript">
+
+    $(document).ready(function () {
+        Highcharts.getOptions().colors = Highcharts.map(Highcharts.getOptions().colors, function (color) {
+            return {
+                radialGradient: {cx: 0.5, cy: 0.3, r: 0.7},
+                stops: [[0, color], [1, Highcharts.Color(color).brighten(-0.3).get('rgb')]]
+            };
+        });
+                $('#chart').highcharts({
+            chart: { },
+            credits: { enabled: false },
+            exporting: { enabled: false },
+            title: { text: '' },
+            xAxis: { categories: ['Feb-2018', ] },
+            yAxis: { min: 0, title: "" },
+            tooltip: {
+                shared: true,
+                followPointer: true,
+                headerFormat: '<div class="well well-sm" style="margin-bottom:0;"><span style="font-size:12px">{point.key}</span><table class="table table-striped" style="margin-bottom:0;">',
+                pointFormat: '<tr><td style="color:{series.color};padding:4px">{series.name}: </td>' +
+                '<td style="color:{series.color};padding:4px;text-align:right;"> <b>{point.y}</b></td></tr>',
+                footerFormat: '</table></div>',
+                useHTML: true, borderWidth: 0, shadow: false,
+                style: {fontSize: '14px', padding: '0', color: '#000000'}
+            },
+            plotOptions: {
+                series: { stacking: 'normal' }
+            },
+            series: [{
+                type: 'column',
+                name: 'Tax',
+                data: [3.00]
+            },
+            {
+                type: 'column',
+                name: 'Discount',
+                data: [0.00]
+            },
+            {
+                type: 'column',
+                name: 'Sales',
+                data: [60.00]
+            }
+            ]
+        });
+                $('#chart2').highcharts({
+    chart: { },
+    title: { text: '' },
+    credits: { enabled: false },
+    exporting: { enabled: false },
+    tooltip: {
+        shared: true,
+        followPointer: true,
+        headerFormat: '<div class="well well-sm" style="margin-bottom:0;"><span style="font-size:12px">{point.key}</span><table class="table table-striped" style="margin-bottom:0;">',
+        pointFormat: '<tr><td style="color:{series.color};padding:4px">{series.name}: </td>' +
+        '<td style="color:{series.color};padding:4px;text-align:right;"> <b>{point.y}</b></td></tr>',
+        footerFormat: '</table></div>',
+        useHTML: true, borderWidth: 0, shadow: false,
+        style: {fontSize: '14px', padding: '0', color: '#000000'}
+    },
+    plotOptions: {
+        pie: {
+            allowPointSelect: true,
+            cursor: 'pointer',
+            dataLabels: {
+                enabled: false
+            },
+            showInLegend: false
+        }
+    },
+
+    series: [{
+        type: 'pie',
+        name: 'Total Sold',
+        data: [
+        ['Minion Hi (TOY01)', 3.00],['Minion Banana (TOY02)', 1.00],        ]
+    }]
+});
+});
+
+</script>
+</body>
+</html>
